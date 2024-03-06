@@ -11,7 +11,7 @@
   <project remote="yocto" name="poky" path="sources/poky"/>
   <project remote="oe" name="meta-openembedded" path="sources/meta-openembedded"/>
   <project remote="mender" name="meta-mender" path="sources/meta-mender"/>
-  <project remote="charlie" name="charlie388/my-mender-bbb" path="sources/my-mender-bbb">
+  <project remote="charlie" name="charlie388/meta-my-mender-bbb" path="sources/meta-my-mender-bbb">
     <copyfile dest="setup-environment" src="scripts/setup-environment"/>
   </project>
 

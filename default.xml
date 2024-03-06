@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+  <remote fetch="https://git.yoctoproject.org/git"  name="yocto"/>
+  <remote fetch="https://github.com/openembedded"   name="oe"/>
+  <remote fetch="https://github.com/mendersoftware" name="mender"/>
+  <remote fetch="ssh://git@github.com"              name="charlie"/>
+
+  <default revision="kirkstone"/>
+
+  <project remote="yocto" name="poky" path="sources/poky"/>
+  <project remote="oe" name="meta-openembedded" path="sources/meta-openembedded"/>
+  <project remote="mender" name="meta-mender" path="sources/meta-mender"/>
+  <project remote="charlie" name="charlie388/my-mender-bbb" path="sources/my-mender-bbb">
+    <copyfile dest="setup-environment" src="scripts/setup-environment"/>
+  </project>
+
+</manifest>

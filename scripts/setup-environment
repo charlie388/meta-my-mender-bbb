@@ -12,7 +12,7 @@ fi
 script_dir=$(dirname "$this_script")
 script_dir=$(readlink -f "$script_dir")
 
-repo_dir=${script_dir}/sources/my-mender-rpi3b
+repo_dir=${script_dir}/sources/meta-my-mender-bbb
 build_dir=${script_dir}/build
 
 if [ -f ${build_dir}/conf/local.conf ]; then

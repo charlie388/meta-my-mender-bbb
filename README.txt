@@ -2,10 +2,6 @@
 # https://github.com/mendersoftware/meta-mender-community
 # https://hub.mender.io/t/beaglebone-black/83
 
-# How to use "repo" after install git
-git config --global user.name "XXX"
-git config --global user.email XXX@XXX
-
 mkdir my-mender-bbb
 cd my-mender-bbb
 repo init -u git@github.com:charlie388/meta-my-mender-bbb.git -b kirkstone

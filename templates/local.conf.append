@@ -68,12 +68,14 @@ MACHINE ?= "beaglebone-yocto"
 
 MENDER_FEATURES_DISABLE:append = " mender-growfs-data"
 
-IMAGE_INSTALL:append = " tzdata openssh"
+IMAGE_INSTALL:append = " tzdata"
 DEFAULT_TIMEZONE = "Asia/Taipei"
 
-EXTRA_IMAGE_FEATURES:append = " read-only-rootfs"
-#EXTRA_IMAGE_FEATURES:append = " ssh-server-dropbear"
+# chose one between ssh-server-openssh and ssh-server-dropbear
+EXTRA_IMAGE_FEATURES:append = " ssh-server-dropbear"
 #SECURITY_STRINGFORMAT = ""
 
 MENDER_UPDATE_POLL_INTERVAL_SECONDS = "5"
 MENDER_INVENTORY_POLL_INTERVAL_SECONDS = "5"
+
+EXTRA_IMAGE_FEATURES:append = " read-only-rootfs"

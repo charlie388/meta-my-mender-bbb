@@ -6,7 +6,7 @@
   <remote fetch="https://github.com/mendersoftware" name="mender"/>
   <remote fetch="ssh://git@github.com"              name="charlie"/>
 
-  <default revision="kirkstone"/>
+  <default revision="kirkstone" upstream="kirkstone"/>
 
   <project remote="yocto" name="poky" path="sources/poky"/>
   <project remote="oe" name="meta-openembedded" path="sources/meta-openembedded"/>

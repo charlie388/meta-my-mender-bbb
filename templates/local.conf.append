@@ -66,7 +66,12 @@ MENDER_DATA_PART_SIZE_MB = "32"
 
 MACHINE ?= "beaglebone-yocto"
 
-MENDER_FEATURES_DISABLE:append = " mender-growfs-data"
+# MENDER_DTB_NAME_FORCE = "
+# am335x-bone.dtb OR am335x-boneblack.dtb OR am335x-bonegreen.dtb"
+MENDER_DTB_NAME_FORCE = "am335x-boneblack.dtb"
+
+MENDER_FEATURES_ENABLE:append = " mender-uboot mender-image-sd"
+MENDER_FEATURES_DISABLE:append = " mender-grub mender-image-uefi  mender-growfs-data"
 
 IMAGE_INSTALL:append = " tzdata"
 DEFAULT_TIMEZONE = "Asia/Taipei"

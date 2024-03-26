@@ -1,0 +1,12 @@
+[Match]
+Name=can*
+
+[CAN]
+BitRate=500000
+SamplePoint=75%
+#FDMode=yes
+#DataBitRate=4000000
+#DataSamplePoint=75%
+RestartSec=1000ms
+BusErrorRoporting=yes
+

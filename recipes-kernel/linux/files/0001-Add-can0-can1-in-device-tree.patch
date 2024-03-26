@@ -1,0 +1,95 @@
+From 610a35d8c1ba554b983f8d146502e67f6660d7e9 Mon Sep 17 00:00:00 2001
+From: Charlie1 Li <charlie1_li@askey.com>
+Date: Mon, 25 Mar 2024 15:01:47 +0800
+Subject: [PATCH] Add can0 can1 in device tree
+
+Remov i2c2 for BBB cape eeprom access
+---
+ arch/arm/boot/dts/am335x-bone-common.dtsi | 61 +++++++----------------
+ 1 file changed, 17 insertions(+), 44 deletions(-)
+
+diff --git a/arch/arm/boot/dts/am335x-bone-common.dtsi b/arch/arm/boot/dts/am335x-bone-common.dtsi
+index 0ccdc7cd463b..75dd1f3679ce 100644
+--- a/arch/arm/boot/dts/am335x-bone-common.dtsi
++++ b/arch/arm/boot/dts/am335x-bone-common.dtsi
+@@ -82,10 +82,17 @@ AM33XX_PADCONF(AM335X_PIN_I2C0_SCL, PIN_INPUT_PULLUP, MUX_MODE0)	/* i2c0_scl.i2c
+ 		>;
+ 	};
+ 
+-	i2c2_pins: pinmux_i2c2_pins {
++	dcan0_pins: pinmux_dcan0_pins {
+ 		pinctrl-single,pins = <
+-			AM33XX_PADCONF(AM335X_PIN_UART1_CTSN, PIN_INPUT_PULLUP, MUX_MODE3)	/* uart1_ctsn.i2c2_sda */
+-			AM33XX_PADCONF(AM335X_PIN_UART1_RTSN, PIN_INPUT_PULLUP, MUX_MODE3)	/* uart1_rtsn.i2c2_scl */
++			AM33XX_PADCONF(AM335X_PIN_UART1_CTSN, PIN_OUTPUT_PULLUP, MUX_MODE2)
++			AM33XX_PADCONF(AM335X_PIN_UART1_RTSN, PIN_INPUT_PULLUP, MUX_MODE2)
++		>;
++	};
++
++	dcan1_pins: pinmux_dcan1_pins {
++		pinctrl-single,pins = <
++			AM33XX_PADCONF(AM335X_PIN_UART1_RXD, PIN_OUTPUT_PULLUP, MUX_MODE2)
++			AM33XX_PADCONF(AM335X_PIN_UART1_TXD, PIN_INPUT_PULLUP, MUX_MODE2)
+ 		>;
+ 	};
+ 
+@@ -224,52 +231,18 @@ baseboard_data: baseboard_data@0 {
+ 	};
+ };
+ 
+-&i2c2 {
++&dcan0 {
+ 	pinctrl-names = "default";
+-	pinctrl-0 = <&i2c2_pins>;
++	pinctrl-0 = <&dcan0_pins>;
+ 
+ 	status = "okay";
+-	clock-frequency = <100000>;
+-
+-	cape_eeprom0: cape_eeprom0@54 {
+-		compatible = "atmel,24c256";
+-		reg = <0x54>;
+-		#address-cells = <1>;
+-		#size-cells = <1>;
+-		cape0_data: cape_data@0 {
+-			reg = <0 0x100>;
+-		};
+-	};
+-
+-	cape_eeprom1: cape_eeprom1@55 {
+-		compatible = "atmel,24c256";
+-		reg = <0x55>;
+-		#address-cells = <1>;
+-		#size-cells = <1>;
+-		cape1_data: cape_data@0 {
+-			reg = <0 0x100>;
+-		};
+-	};
++};
+ 
+-	cape_eeprom2: cape_eeprom2@56 {
+-		compatible = "atmel,24c256";
+-		reg = <0x56>;
+-		#address-cells = <1>;
+-		#size-cells = <1>;
+-		cape2_data: cape_data@0 {
+-			reg = <0 0x100>;
+-		};
+-	};
++&dcan1 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&dcan1_pins>;
+ 
+-	cape_eeprom3: cape_eeprom3@57 {
+-		compatible = "atmel,24c256";
+-		reg = <0x57>;
+-		#address-cells = <1>;
+-		#size-cells = <1>;
+-		cape3_data: cape_data@0 {
+-			reg = <0 0x100>;
+-		};
+-	};
++	status = "okay";
+ };
+ 
+ 

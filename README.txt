@@ -5,6 +5,8 @@
 # This version only use u-boot.
 # https://docs.mender.io/operating-system-updates-yocto-project/board-integration/bootloader-support/u-boot
 # https://docs.mender.io/operating-system-updates-yocto-project/board-integration/bootloader-support/u-boot/manual-u-boot-integration
+# Add CAN interface (SocketCAN) and CAN tools
+
 mkdir my-mender-bbb
 cd my-mender-bbb
 repo init -u git@github.com:charlie388/meta-my-mender-bbb.git -b kirkstone
